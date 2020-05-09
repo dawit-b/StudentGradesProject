@@ -68,7 +68,8 @@ public class StudentRecord {
 
 	@Override
 	public String toString() {
-		return studentID + " " + departmentID + " " + courseNum;
+		return studentID + " " + departmentID + " " + courseNum
+				+ " " + courseDate + " " + credits + " " + studentGrade;
 
 	}
 
