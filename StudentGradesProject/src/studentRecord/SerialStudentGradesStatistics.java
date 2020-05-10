@@ -14,7 +14,7 @@ public class SerialStudentGradesStatistics {
 				.collect(Collectors.groupingBy(StudentRecord::getStudentID, 
 						Collectors.averagingDouble(StudentRecord::getStudentGrade)));
 		
-		studentsGradeMap.forEach((id, gpa) -> System.out.println(id + ":"+ gpa*(4/100)));
+		//studentsGradeMap.forEach((id, gpa) -> System.out.println(id + ":"+ gpa*(4/100)));
 		System.out.println("=========================================");
 
 	}
@@ -47,7 +47,7 @@ public class SerialStudentGradesStatistics {
 				.collect(Collectors.groupingBy(StudentRecord::getDepartmentID, 
 						Collectors.averagingDouble(StudentRecord::getStudentGrade)));
 		
-		departmentGPA.forEach((dept, gpa) -> System.out.println("Department: "+ dept + "GPA: " + gpa));
+		departmentGPA.forEach((dept, gpa) -> System.out.println("Department: "+ dept + " GPA: " + gpa));
 		System.out.println("=========================================");
 		
 	}
@@ -59,7 +59,7 @@ public class SerialStudentGradesStatistics {
 				.stream()
 				.collect(Collectors.groupingBy(StudentRecord::getCourseNum, 
 						Collectors.averagingDouble(StudentRecord::getStudentGrade)));
-		courseGPA.forEach((course, gpa)-> System.out.println("Course: "+ course + "GPA"+ gpa));
+		courseGPA.forEach((course, gpa)-> System.out.println("Course: "+ course + " GPA: "+ gpa));
 		System.out.println("=========================================");
 
 	}

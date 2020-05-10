@@ -15,6 +15,17 @@ public class Main {
 		Date start_time , end_time;
 		
 		start_time = new Date();
+		records = DataLoader.serialLoader(path);
+		
+		SerialStudentGradesStatistics.allStudentsGPA(records);
+		SerialStudentGradesStatistics.departmentAverageGPA(records);
+		SerialStudentGradesStatistics.studentsGPAStatistics(records);
+		SerialStudentGradesStatistics.courseAverageGPA(records);
+		
+		end_time = new Date();
+		System.out.println("Serial execution time: " + (end_time.getTime() - start_time.getTime()));
+		
+		start_time = new Date();
 		records = DataLoader.parallelLoader(path);
 		
 		ParallelStudentGradesStatistics.allStudentsGPA(records);
@@ -25,16 +36,7 @@ public class Main {
 		
 		System.out.println("Parallel execution time: " + (end_time.getTime() - start_time.getTime()));
 		
-		start_time = new Date();
-		records = DataLoader.serialLoader(path);
-		
-		SerialStudentGradesStatistics.allStudentsGPA(records);
-		SerialStudentGradesStatistics.departmentAverageGPA(records);
-		SerialStudentGradesStatistics.studentsGPAStatistics(records);
-		SerialStudentGradesStatistics.courseAverageGPA(records);
-		
-		end_time = new Date();
-		System.out.println("Parallel execution time: " + (end_time.getTime() - start_time.getTime()));
+	
 
 	}
 
