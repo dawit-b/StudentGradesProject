@@ -35,5 +35,21 @@ public class ParallelStudentGradesStatistics {
 				.collect(Collectors.summarizingDouble(StudentGPA::getGpa));
 		System.out.println("Highest GPA student: "+ gpaStatistics.getMax());
 		System.out.println("Lowest GPA student: "+ gpaStatistics.getMin());
+		System.out.println("=========================================");
+	}
+	
+	public static void departmentAverageGPA( List<StudentRecord> records) {
+		System.out.println("=========================================");
+		System.out.println("Average GPA by Department");
+		
+		Map<String, Double> departmentGPA = records
+				.parallelStream()
+				.collect(Collectors.groupingBy(StudentRecord::getDepartmentID, 
+						Collectors.averagingDouble(StudentRecord::getStudentGrade)));
+		
+		departmentGPA.forEach((dept, gpa) -> System.out.println("Department: "+ dept + "GPA: " + gpa));
+		
+		
+		
 	}
 }
