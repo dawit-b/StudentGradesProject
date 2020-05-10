@@ -52,4 +52,16 @@ public class ParallelStudentGradesStatistics {
 		
 		
 	}
+	
+	public static void courseAverageGPA(List <StudentRecord> records) {
+		System.out.println("=========================================");
+		System.out.println("Average GPA by Course");
+		Map<Integer, Double> courseGPA = records
+				.parallelStream()
+				.collect(Collectors.groupingBy(StudentRecord::getCourseNum, 
+						Collectors.averagingDouble(StudentRecord::getStudentGrade)));
+		courseGPA.forEach((course, gpa)-> System.out.println("Course: "+ course + "GPA"+ gpa));
+	}
+	
+	
 }
