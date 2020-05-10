@@ -48,8 +48,7 @@ public class ParallelStudentGradesStatistics {
 						Collectors.averagingDouble(StudentRecord::getStudentGrade)));
 		
 		departmentGPA.forEach((dept, gpa) -> System.out.println("Department: "+ dept + "GPA: " + gpa));
-		
-		
+		System.out.println("=========================================");
 		
 	}
 	
@@ -61,6 +60,8 @@ public class ParallelStudentGradesStatistics {
 				.collect(Collectors.groupingBy(StudentRecord::getCourseNum, 
 						Collectors.averagingDouble(StudentRecord::getStudentGrade)));
 		courseGPA.forEach((course, gpa)-> System.out.println("Course: "+ course + "GPA"+ gpa));
+		System.out.println("=========================================");
+
 	}
 	
 	
