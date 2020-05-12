@@ -12,9 +12,9 @@ public class Main {
 	public static void main(String[] args) throws IOException{
 		List<StudentRecord> records = new ArrayList<StudentRecord>();
 		Path path = Paths.get("Data", "Student Grade Record.txt");
-		Date start_time , end_time;
+		Date start_time , end_time, serial_start_time, serial_end_time;
 		
-		start_time = new Date();
+		serial_start_time = new Date();
 		records = DataLoader.serialLoader(path);
 		
 		SerialStudentGradesStatistics.allStudentsGPA(records);
@@ -22,8 +22,7 @@ public class Main {
 		SerialStudentGradesStatistics.studentsGPAStatistics(records);
 		SerialStudentGradesStatistics.courseAverageGPA(records);
 		
-		end_time = new Date();
-		System.out.println("Serial execution time: " + (end_time.getTime() - start_time.getTime()));
+		serial_end_time = new Date();
 		
 		start_time = new Date();
 		records = DataLoader.parallelLoader(path);
@@ -33,8 +32,10 @@ public class Main {
 		ParallelStudentGradesStatistics.studentsGPAStatistics(records);
 		ParallelStudentGradesStatistics.courseAverageGPA(records);
 		end_time  = new Date();
-		
+		System.out.println("Serial execution time: " + (serial_end_time.getTime() - serial_start_time.getTime()));
+
 		System.out.println("Parallel execution time: " + (end_time.getTime() - start_time.getTime()));
+		System.out.println("Speed up: " + (float)((serial_end_time.getTime() - serial_start_time.getTime())) / (end_time.getTime() - start_time.getTime()));
 		
 	
 
